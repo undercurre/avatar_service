@@ -5,6 +5,7 @@ import { UserAvatar } from './avatar/entity/avatar.entity';
 import { AvatarModule } from './avatar/avatar.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { AppService } from './app.service';
       inject: [ConfigService],
     }),
     AvatarModule,
+    AuthModule,
   ],
   providers: [AppService],
   controllers: [AppController],
