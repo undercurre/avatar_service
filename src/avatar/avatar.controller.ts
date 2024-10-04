@@ -19,7 +19,7 @@ import { Express } from 'express';
 export class UserAvatarController {
   constructor(private readonly userAvatarService: UserAvatarService) {}
 
-  @Post('avatar')
+  @Post('upload')
   @UseInterceptors(
     FileInterceptor('file', {
       storage: diskStorage({
@@ -39,13 +39,13 @@ export class UserAvatarController {
     return { url };
   }
 
-  @Post()
+  @Post('create')
   create(@Body() createUserAvatarDto: CreateUserAvatarDto) {
     return this.userAvatarService.create(createUserAvatarDto);
   }
 
   @Get(':userId')
-  findByUserId(@Param('userId') userId: string) {
+  async findByUserId(@Param('userId') userId: string) {
     return this.userAvatarService.findByUserId(userId);
   }
 

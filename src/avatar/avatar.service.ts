@@ -31,7 +31,10 @@ export class UserAvatarService {
   }
 
   async findByUserId(userId: string): Promise<UserAvatar> {
-    return this.userAvatarRepository.findOne({ where: { user_id: userId } });
+    return this.userAvatarRepository.findOne({
+      order: { updated_at: 'DESC' },
+      where: { user_id: userId },
+    });
   }
 
   async updateAvatar(userId: string, avatarUrl: string): Promise<void> {

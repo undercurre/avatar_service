@@ -5,7 +5,7 @@ export class UserAvatar {
   @PrimaryGeneratedColumn()
   id: string;
 
-  @Column()
+  @Column({ type: 'varchar', length: 255, collation: 'utf8mb4_bin' })
   user_id: string;
 
   @Column()
